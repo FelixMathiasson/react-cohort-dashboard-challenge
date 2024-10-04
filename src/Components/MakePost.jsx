@@ -16,7 +16,7 @@ export default function MakePost({posts, setPosts, users}) {
             method: "POST",
             body: JSON.stringify({
                 contactId: 1,
-                title: "Added post title",
+                title: newTitle,
                 content: newPost,
             }),
             headers: {
@@ -40,10 +40,14 @@ export default function MakePost({posts, setPosts, users}) {
         <section id='createPost'>
             <IconUser user={users[0]}/>
             <div id='createPostForm'>
-                <form id='form' onSubmit={ManageSubmission}>
+                <form id='formPosting' onSubmit={ManageSubmission}>
                     <input type='text' name='title' placeholder="Title" value={newTitle} onChange={ManageChange}/>
-                    <input type='text' name='content' placeholder="What's on your mind?" value={newPost} onChange={ManageChange}/>
-                    <button id='postPostingButton' type='submit'>Post</button>
+                    <div id='onYourMind'>
+                        <input type='text' name='content' placeholder="What's on your mind?" value={newPost} onChange={ManageChange}/>
+                    </div>
+                    <div id='postBtn'>
+                      <button id='postPostingButton' type='submit'>Post</button>
+                    </div>
                 </form>
             </div>
         </section>
