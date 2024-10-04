@@ -7,11 +7,15 @@ export default function Content({post, users}) {
 
     // eslint-disable-next-line react/prop-types
     let user = users.find(user => user.id === post.contactId) 
+
+    
+    const firstName = user?.firstName[0] || 'Unknown'
+    const lastName = user?.lastName[0] || 'User'
     return (
         <div className='postContents'>
             <IconUser user={user} className='icon'/>
             <div className='postTitle'>
-                <h3>{user.firstName + ' ' + user.lastName}</h3>
+                <h3>{firstName + ' ' + lastName}</h3>
                  {/* eslint-disable-next-line react/prop-types */}
                 <h4><Link to ={`/post/${post.id}`}>{post.title}</Link></h4>
             </div>
