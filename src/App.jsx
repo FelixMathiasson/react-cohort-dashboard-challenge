@@ -52,13 +52,13 @@ function App() {
 
   return (
     <>
-      <AppContext.Provider value={{ loggedIn, setLoggedIn }}>
+      <AppContext.Provider value={{ loggedIn, setLoggedIn, users, posts }}>
         <Header/>
         <Side />
           <div>
             <Routes>
-              <Route path = '/' element={<Homepage posts={posts} users={users} setPosts={setPosts}/>}/>
-              <Route path='/post/:id' element={<PostView users={users} posts={posts} setPosts={setPosts}/>}/>
+              <Route path = '/' element={<Homepage setPosts={setPosts}/>}/>
+              <Route path='/post/:id' element={<PostView  setPosts={setPosts}/>}/>
               <Route path='/profile' element={<ProfilePage update={updateUsers}/>}/>
             </Routes>
         </div>

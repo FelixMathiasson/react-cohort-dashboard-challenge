@@ -78,6 +78,17 @@ hr {
   padding: 10px;
 }
 
+.previousComments {
+  background-color: #9e9ec5;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  width: 155px;
+  height: 20px;
+  cursor:pointer;
+  margin-bottom: 8px;
+}
+
 .comment {
   display: grid;
   grid-template-columns: 50px auto auto;

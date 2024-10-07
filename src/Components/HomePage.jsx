@@ -1,8 +1,12 @@
 import Post from './Post'
 import MakePost from './MakePost'
+import { AppContext } from "../App"
+import { useContext } from 'react'
 
 // eslint-disable-next-line react/prop-types
-export default function Homepage({users, posts, setPosts}) {
+export default function Homepage({setPosts}) {
+    const { posts, users } = useContext(AppContext)
+
     return (
         <main className='page'>
             <MakePost posts = {posts} setPosts={setPosts}  users = {users}/>
