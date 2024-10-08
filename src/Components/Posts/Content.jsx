@@ -13,14 +13,18 @@ export default function Content({post, users}) {
     const lastName = user?.lastName[0] || 'User'
     return (
         <div className='postContents'>
-            <IconUser user={user} className='icon'/>
-            <div className='postTitle'>
-                <h3>{firstName + ' ' + lastName}</h3>
-                 {/* eslint-disable-next-line react/prop-types */}
-                <h4><Link to ={`/post/${post.id}`}>{post.title}</Link></h4>
-            </div>
-             {/* eslint-disable-next-line react/prop-types */}
-            <p className='postText'>{post.content}</p>
+        <IconUser user={user} className='icon'/>
+        <div className='postTitle'>
+            <h3>
+                <Link to={`/profile/${user?.id}`}>{firstName} {lastName}</Link>
+            </h3>
+            <h4>
+                {/* eslint-disable-next-line react/prop-types */}
+                <Link to={`/post/${post.id}`}>{post.title}</Link>
+            </h4>
         </div>
+        {/* eslint-disable-next-line react/prop-types */}
+        <p className='postText'>{post.content}</p>
+    </div>
     )
 }

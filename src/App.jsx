@@ -60,6 +60,7 @@ function App() {
               <Route path = '/' element={<Homepage setPosts={setPosts}/>}/>
               <Route path='/post/:id' element={<PostView  setPosts={setPosts}/>}/>
               <Route path='/profile' element={<ProfilePage update={updateUsers}/>}/>
+              <Route path='/profile/:id' element={<ProfilePage update={updateUsers}/>}/>
             </Routes>
         </div>
       </AppContext.Provider> 

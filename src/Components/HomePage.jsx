@@ -6,6 +6,7 @@ import { useContext } from 'react'
 // eslint-disable-next-line react/prop-types
 export default function Homepage({setPosts}) {
     const { posts, users } = useContext(AppContext)
+    console.log(posts)
 
     return (
         <main className='page'>

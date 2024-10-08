@@ -6,36 +6,49 @@ export default function MakePost({posts, setPosts, users}) {
     const [newPost, setNewPost] = useState('')
     const [newTitle, setNewTitle] = useState('')
 
-    function ManageSubmission(e) {
-        e.preventDefault()
-        // eslint-disable-next-line react/prop-types
-        const id = posts.length + 1
+
 
         
-        fetch("https://boolean-uk-api-server.fly.dev/FelixMathiasson/post", {
-            method: "POST",
-            body: JSON.stringify({
-                contactId: 1,
-                title: newTitle,
-                content: newPost,
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }}).then((response) => response.json())
-
-        setPosts([{contactId: 1, title: newTitle, content: newPost, id: id}, ...posts])
-        setNewPost('')
-        setNewTitle('')
-    }
-    function ManageChange(e) {
-        const { name, value } = e.target
-        if(name === 'content') {
-            setNewPost(value)
-        } else if (name === 'title') {
-            setNewTitle(value)
+        async function ManageSubmission(e) {
+            e.preventDefault()
+    
+            try {
+                const response = await fetch("https://boolean-uk-api-server.fly.dev/FelixMathiasson/post", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        contactId: 1,
+                        title: newTitle,
+                        content: newPost,
+                    }),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                })
+    
+                if (response.ok) {
+                    const createdPost = await response.json()
+                    
+                    setPosts([createdPost, ...posts])
+                } else {
+                    console.error("Failed to create a new post")
+                }
+            } catch (error) {
+                console.error('Error:', error)
+            }
+    
+            setNewPost('')
+            setNewTitle('')
         }
-    }
 
+        function ManageChange(e) {
+            const { name, value } = e.target
+            if (name === 'content') {
+                setNewPost(value)
+            } else if (name === 'title') {
+                setNewTitle(value)
+            }
+        }
+    
     return (
         <section id='createPost'>
             <IconUser user={users[0]}/>
